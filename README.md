@@ -25,7 +25,7 @@ Brandon combines modern AI technologies to provide an intelligent, conversationa
 - **Auth & Database**: Supabase
 - **File Storage**: Supabase Storage
 - **Vector Database**: Pinecone
-- **LLM**: Gemini 1.5 Pro (Google Generative AI)
+- **LLM**: Gemini 3 Pro Preview (Google Generative AI) with responseSchema for structured JSON output
 - **Embeddings**: OpenAI text-embedding-3-large
 - **Deployment**: Vercel
 
@@ -269,6 +269,32 @@ Brandon uses a hybrid search approach:
    - Favors assets acquired within the last 3 years
 4. **LLM Selection**: Gemini selects and explains the best matches
 
+## Gemini 3 Prompting Strategy
+
+Brandon implements Google's recommended best practices for Gemini 3 Pro Preview:
+
+### PTCF Framework
+All prompts follow the **Persona-Task-Context-Format** structure using XML-style tags for clear organization:
+- `<persona>`: Defines Brandon's role and expertise
+- `<task>`: States the objective clearly
+- `<context>`: Provides necessary background information
+- `<format>`: Specifies output structure
+
+### Structured JSON Output
+Uses Gemini's `responseSchema` parameter to guarantee valid JSON responses without manual parsing:
+- Vision model returns structured image analysis matching exact schema
+- Chat model returns formatted asset selections with explanations
+- Eliminates need for regex-based JSON extraction from markdown
+
+### Temperature Settings
+Uses Gemini 3's default temperature (1.0) as recommended by Google for optimal instruction following and reasoning.
+
+### System Instructions
+Leverages the `systemInstruction` parameter for the chat model to define Brandon's persona and rules consistently across all interactions.
+
+### Image Ordering
+Places images before text prompts in vision API calls, following Gemini's multimodal best practices for improved performance.
+
 ## Deployment to Vercel
 
 1. **Push to GitHub**:
@@ -349,7 +375,7 @@ brandon/
 
 - Verify your Gemini API key is valid
 - Check you have quota remaining
-- Note: Model is `gemini-1.5-pro` (not `gemini-3-pro-preview`)
+- Note: Model is `gemini-3-pro-preview`
 
 ### Pinecone Connection Issues
 
