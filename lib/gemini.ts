@@ -7,14 +7,14 @@ if (!process.env.GEMINI_API_KEY) {
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY)
 
-// Vision model for image analysis
+// Vision model for image analysis - using Gemini 3 Pro Preview
 export const visionModel = genAI.getGenerativeModel({
-  model: 'gemini-1.5-pro',
+  model: 'gemini-3-pro-preview',
 })
 
-// Chat model for conversational responses
+// Chat model for conversational responses - using Gemini 3 Pro Preview
 export const chatModel = genAI.getGenerativeModel({
-  model: 'gemini-1.5-pro',
+  model: 'gemini-3-pro-preview',
 })
 
 export async function analyzeImage(

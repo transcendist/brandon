@@ -25,7 +25,7 @@ Brandon combines modern AI technologies to provide an intelligent, conversationa
 - **Auth & Database**: Supabase
 - **File Storage**: Supabase Storage
 - **Vector Database**: Pinecone
-- **LLM**: Gemini 1.5 Pro (Google Generative AI)
+- **LLM**: Gemini 3 Pro Preview (Google Generative AI)
 - **Embeddings**: OpenAI text-embedding-3-large
 - **Deployment**: Vercel
 
@@ -349,7 +349,7 @@ brandon/
 
 - Verify your Gemini API key is valid
 - Check you have quota remaining
-- Note: Model is `gemini-1.5-pro` (not `gemini-3-pro-preview`)
+- Note: Model is `gemini-3-pro-preview`
 
 ### Pinecone Connection Issues
 
